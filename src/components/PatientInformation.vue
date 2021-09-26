@@ -2,12 +2,15 @@
   <b-container class="pb-3">
     <b-row no-gutters>
       <b-col cols="12" sm="6" class="text-left">
-          <h3> {{ name }} </h3>
+          <h3> {{ patient.last_name.toUpperCase() }} {{ patient.first_name[0].toUpperCase()+patient.first_name.substring(1) }} </h3>
       </b-col>
       <b-col cols="12" sm="6" class="texte-left text-sm-right">
-        <span> {{ type }} - Né le {{ dateBorn }}</span><br>
-        <span  v-if="dateDeath"> Décédé le {{ dateDeath }} à {{ age }} ans</span><br>
-        <span> N° de DP : {{ DP }}</span>
+        <span v-if='patient.sex==="M"'> Homme </span>
+        <span v-else> Femme </span>
+        <span> - Né le {{ patient.birth_date }}</span><br>
+        <span  v-if="patient.death_date"> Décédé le {{ patient.death_date }} à {{ patient.age_death }} ans</span>
+        <span v-else> Agé de {{ patient.age }} </span><br>
+        <span> N° de DP : {{ patient.ipps[0].ipp }}</span>
       </b-col>
     </b-row>
   </b-container>
@@ -16,16 +19,7 @@
 <script>
 export default {
   name: 'PatientInformation',
-  data () {
-    return {
-      name: 'SAXON Jamie',
-      type: 'Homme',
-      dateBorn: '06/01/1975',
-      dateDeath: '04/07/2011',
-      age: 29,
-      DP: 3566
-    }
-  }
+  props: ['patient']
 }
 </script>
 

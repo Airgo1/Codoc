@@ -71,7 +71,17 @@
   box-sizing: border-box;
   border-radius: 4px;
 }
-
+.btn-outline-success:not(:disabled):not(.disabled):active {
+  color: #fff;
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-outline-success:focus, .btn-outline-success.focus {
+  box-shadow: 0 0 0 0.2rem transparent;
+}
+.btn-outline-success:not(:disabled):not(.disabled):active:focus, .btn-outline-success:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem transparent;
+}
  ::-webkit-scrollbar {
   width: 10px;
 }

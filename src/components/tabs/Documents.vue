@@ -1,7 +1,7 @@
 <template>
   <b-row align-v="stretch" class="TabDocument">
     <b-col>
-      <b-card fluid class="CardChoice">
+      <b-card fluid class="CardChoice h-100">
         <b-container class="mb-3">
           <b-row class="padding" align-v="center">
             <b-col class="px-0">
@@ -9,7 +9,7 @@
               <b-input-group prepend="|" class="ButtonTemplate">
                 <b-form-input v-model="inputSearch" placeholder="Rechercher dans un document"></b-form-input>
                 <b-input-group-append>
-                  <b-button variant="outline-success"><b-icon icon="search" font-scale="1"></b-icon></b-button>
+                  <b-button variant="outline-success" @click="search"><b-icon icon="search" font-scale="1"></b-icon></b-button>
                 </b-input-group-append>
               </b-input-group>
               </div>
@@ -231,7 +231,6 @@ export default {
         var temp = []
         docs.forEach(element => {
           if (element.encounter) {
-            console.log(element.encounter.entry_date)
             if (element.encounter.entry_date >= this.inputDateBegin) {
               temp.push(element)
             }
@@ -241,14 +240,12 @@ export default {
       }
     },
     filterDateEnd (docs) {
-      console.log(this.inputDateEnd)
       if (this.inputDateEnd === null || this.inputDateEnd === '') {
         return docs
       } else {
         var temp = []
         docs.forEach(element => {
           if (element.encounter) {
-            console.log(element.encounter.out_date)
             if (element.encounter.out_date <= this.inputDateEnd) {
               temp.push(element)
             }
@@ -256,6 +253,20 @@ export default {
         })
         return temp
       }
+    },
+    search () {
+      this.filter()
+      if (!this.inputSearch) return
+      this.filtred = true
+      var resDocs = []
+      this.documentsFiltred.forEach(element => {
+        if (element.title.toLowerCase().includes(this.inputSearch.toLowerCase()) || element.displayed_text.toLowerCase().includes(this.inputSearch.toLowerCase())) {
+          var newelement = element.displayed_text.replace(this.inputSearch, "<span style='background-color:yellow'>" + this.inputSearch + '</span>')
+          element.displayed_text = newelement
+          resDocs.push(element)
+        }
+      })
+      this.documentsFiltred = resDocs
     }
   },
   watch: {

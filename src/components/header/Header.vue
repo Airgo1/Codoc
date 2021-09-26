@@ -29,7 +29,7 @@
         <b-nav-form class="mb-3">
           <b-container>
             <b-input-group inline prepend="|" class="ButtonTemplate">
-              <b-form-input v-model="inputSearch" placeholder="Rechercher d'un patient"></b-form-input>
+              <b-form-input v-model="patientSearch" placeholder="Rechercher d'un patient"></b-form-input>
               <b-input-group-append>
                 <b-button ><b-icon icon="search" font-scale="1"></b-icon></b-button>
               </b-input-group-append>
@@ -55,6 +55,11 @@ export default {
   name: 'NavBar',
   components: {
     Account
+  },
+  data () {
+    return {
+      patientSearch: null
+    }
   }
 }
 </script>
