@@ -1,6 +1,6 @@
 <template>
 <div class="ContainerNavBar my-0">
-  <b-navbar type="light" class="container-fluid px-0 pb-0 pt-2">
+  <b-navbar type="light" class="container-lg px-0 pb-0 pt-2">
     <b-navbar-brand class ="position-relative" href="#">
       <img src="@/assets/image/Logo_Codoc_Blue.png" class="d-inline-blocks mb-3" alt="Codoc">
     </b-navbar-brand>

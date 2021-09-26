@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="Account">
   <b-row>
     <b-col sm="10">
       <div class="text-right">
@@ -21,28 +21,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h5 {
-  font-family: Assistant;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
-  text-align: right;
+.Account {
+  min-width: 150px;
+  max-width: 250px;
+
+  h5 {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: right;
+  }
+  p {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 17px;
+    text-align: right;
+  }
+  img {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
 }
-p {
-  font-family: Assistant;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 17px;
-  text-align: right;
-}
-img {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+
 </style>
