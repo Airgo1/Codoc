@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+
+@import './variable.scss';
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../../node_modules/bootstrap-vue/src/index.scss';
+
+.nav-tabs {
+  border-bottom: 0px solid transparent;
+}
+.nav-tabs .nav-link {
+  border: 0px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.nav-tabs .nav-link.active {
+  color: #487DF0;
+  background-color: transparent;
+  border-bottom: 4px solid #487DF0;
+
+}
+.nav-tabs .nav-link:hover {
+  color: #487DF0;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 4px solid #487DF0;
+}
+.card {
+  border: 0px solid rgba(0, 0, 0, 0.125);
+}
+.table {
+  color: black;
+  font-family: 'Assistant';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+.table.b-table > thead > tr > .table-b-table-default {
+  color: grey;
+  background-color: white;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  //styleName: Section Title;
+  font-family: Assistant;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  vertical-align: middle;
+}
+.table-striped tbody tr:nth-of-type(2n+1) {
+  background-color: #F1F3F8;
+  border-radius: 4px;
+}
+.table th, .table td {
+  padding: 0.5rem;
+  vertical-align: top;
+  border-top: 0px solid transparent;
+}
+.table-active {
+  background-color: transparent;
+  border: 2px solid #487DF0;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.btn-outline-success:not(:disabled):not(.disabled):active {
+  color: #fff;
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-outline-success:focus, .btn-outline-success.focus {
+  box-shadow: 0 0 0 0.2rem transparent;
+}
+.btn-outline-success:not(:disabled):not(.disabled):active:focus, .btn-outline-success:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem transparent;
+}
+ ::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #487DF0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #487DF0;
+} 
+
+
+:root {
+    color: black;
+    font-family: 'Assistant', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+#app {
+  color: black;
+  font-family: 'Assistant', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: $body-bg;
+}
+.ContainerNavBar {
+    position: relative;
+    height: 80px;
+    border-bottom: 1px solid $bar;
+    background-color: #FFFFFF;
+}
+.NavBar {
+  position: relative;
+}
+.NavItems {
+  position: relative;
+  padding-top: 0%;
+
+  font-family: 'Assistant', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: black;
+}
+.NavItem {
+  position: relative;
+  height: 60px;
+  width: 110px;
+  border-radius: 10px 0px 0px 0px;
+  border-bottom: 4px solid #FFFFFF;
+  background-color: #FFFFFF;
+
+  &:hover {
+    background: #F2F2F2;
+    border-color: #487DF0;
+  }
+}
+.ActItem {
+  position: relative;
+  height: 60px;
+  width: 110px;
+  border-radius: 10px 0px 0px 0px;
+  border-bottom: 4px solid #487DF0;
+  background-color: #F2F2F2;
+}
+
+.Tabs {
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 4px solid #FFFFFF;
+  background-color: #FFFFFF;
+
+  &-Item {
+
+    &:hover {
+      background: #F2F2F2;
+      border-color: #487DF0;
+    }
+  }
+  &-ActiveItem {
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 4px solid #487DF0;
+    background-color: #F2F2F2;
+  }
+}
