@@ -7,11 +7,12 @@
             <b-col class="px-0">
               <div>
               <b-input-group prepend="|" class="ButtonTemplate">
-                <b-form-input v-model="inputSearch" placeholder="Rechercher dans un document"></b-form-input>
+                <b-form-input list="search" v-model="inputSearch" placeholder="Rechercher dans un document"></b-form-input>
                 <b-input-group-append>
                   <b-button variant="outline-success" @click="search"><b-icon icon="search" font-scale="1"></b-icon></b-button>
                 </b-input-group-append>
               </b-input-group>
+              <b-form-datalist id="search" :options='lastSearchs'></b-form-datalist>
               </div>
             </b-col>
             <b-col class="px-0">
@@ -29,12 +30,13 @@
                 <div class="Modal">
                   <div class="mt-3">
                     <label class="modalLabel mb-0"> Origine du document</label>
-                    <b-form-input id="listOrigin" list="input-list" v-model="inputOriginDocument" placeholder="Input text (default)" size="lg"></b-form-input>
+                    <b-form-input list="listOrigin" v-model="inputOriginDocument" placeholder="Input text (default)" size="lg"></b-form-input>
                     <b-form-datalist id="listOrigin" :options='listOrigine'></b-form-datalist>
                   </div>
                   <div class="mt-3">
-                    <label class="modalLabel mb-0">Type DE document</label>
-                    <b-form-input v-model="inputTypeContract" placeholder="Input text (default)" size="lg"></b-form-input>
+                    <label class="modalLabel mb-0">Type de document</label>
+                    <b-form-input list="listType" v-model="inputTypeContract" placeholder="Input text (default)" size="lg"></b-form-input>
+                    <b-form-datalist id="listType" :options='listType'></b-form-datalist>
                   </div>
                   <div class="mt-3">
                     <label class="modalLabel mb-0">N° de séjour</label>
@@ -105,6 +107,7 @@ export default {
       sortBy: 'document_type',
       sortDesc: false,
       inputSearch: null,
+      lastSearchs: [],
       fields: [
         { key: 'document_origin_code', label: 'Origine', sortable: true },
         { key: 'title', label: 'Titre', sortable: true },
@@ -137,6 +140,9 @@ export default {
     })
     this.documents = data
     this.documentsFiltred = this.documents
+  },
+  mounted () {
+    // if (localStorage.lastSearchs) this.lastSearchs = localStorage.lastSearchs
   },
   methods: {
     getDocuments () {
@@ -254,8 +260,15 @@ export default {
         return temp
       }
     },
+    addlastSearchs (search) {
+      this.lastSearchs.push(search)
+      if (this.lastSearchs.length > 3 && search && !this.lastSearchs.includes(search)) {
+        this.lastSearchs.shift()
+      }
+    },
     search () {
       this.filter()
+      this.addlastSearchs(this.inputSearch)
       if (!this.inputSearch) return
       this.filtred = true
       var resDocs = []
@@ -270,20 +283,23 @@ export default {
     }
   },
   watch: {
-    inputTypeContract: function (val) {
+    inputTypeContract () {
       this.buttonEtat()
     },
-    inputOriginDocument: function (val) {
+    inputOriginDocument () {
       this.buttonEtat()
     },
-    inputNumberSejour: function (val) {
+    inputNumberSejour () {
       this.buttonEtat()
     },
-    inputDateBegin: function (val) {
+    inputDateBegin () {
       this.buttonEtat()
     },
-    inputDateEnd: function (val) {
+    inputDateEnd () {
       this.buttonEtat()
+    },
+    lastSearchs (newVal) {
+      // localStorage.lastSearchs = newVal
     }
   }
 }
