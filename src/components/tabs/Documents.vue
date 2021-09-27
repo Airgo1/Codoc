@@ -274,7 +274,7 @@ export default {
       var resDocs = []
       this.documentsFiltred.forEach(element => {
         if (element.title.toLowerCase().includes(this.inputSearch.toLowerCase()) || element.displayed_text.toLowerCase().includes(this.inputSearch.toLowerCase())) {
-          var newelement = element.displayed_text.replace(this.inputSearch, "<span style='background-color:yellow'>" + this.inputSearch + '</span>')
+          var newelement = element.displayed_text.replace(this.inputSearch, "<span style='background-color:yellow;font-weight: bold;border-radius: 4px;'>" + this.inputSearch + '</span>')
           element.displayed_text = newelement
           resDocs.push(element)
         }
